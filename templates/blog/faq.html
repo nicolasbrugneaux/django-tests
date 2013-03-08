@@ -1,10 +1,8 @@
-<title>FAQ</title>
-<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}styles/style.css">
+{% extends "blog/base.html" %}
 
-{% include 'blog/nav.html' %}
+{% block title %}FAQ{% endblock %}
 
-<body>
-	<div class="content">
+{% block content %}
 
 	<h1>Voici la foire aux questions !</h1>
 	<!-- start slipsum code -->
@@ -20,5 +18,4 @@
 
 	<!-- end slipsum code -->
 
-	</div>
-</body>
+{% endblock %}

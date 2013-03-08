@@ -1,14 +1,11 @@
-<title>Contact</title>
-<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}styles/style.css">
+{% extends "blog/base.html" %}
 
-{% include 'blog/nav.html' %}
+{% block title %}Contact{% endblock %}
 
-<body>
-	<div class="content">
+{% block content %}
 		<h1>Contact</h1>
 		<form action="{% url 'blog.views.contact' %}" method="post">{% csrf_token %}
 		{{ form.as_p }}
 		<input type="submit" value="Submit" />
 		</form>
-	</div>
-</body>
+{% endblock %}

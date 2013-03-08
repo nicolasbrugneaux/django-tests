@@ -45,4 +45,4 @@ def contact(request):
 
 def home(request):
 	articles = Article.objects.all()
-	return render(request, 'blog/home.html', {'derniers_articles':articles})
+	return render(request, 'blog/home.html', {'derniers_articles':articles, 'last':articles[0]})

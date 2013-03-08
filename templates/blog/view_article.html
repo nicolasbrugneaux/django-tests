@@ -1,13 +1,10 @@
-<title>Article - {{article.titre}}</title>
-<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}styles/style.css">
+{% extends "blog/base.html" %}
 
+{% block title %}Article - {{article.titre}} {% endblock %}
 
-{% include 'blog/nav.html' %}
-
-<body>
-	<div class="content">
+{% block content %}
 	<h1>{{ article.titre }} <span class="small">dans {{ article.categorie.nom }}</span></h1>
-	<p class="infos"><i>Rédigé par {{ article.auteur }}, le {{ article.date|date:"DATE_FORMAT" }}</i></p>
+	<p class="infos">Rédigé par {{ article.auteur }}, le {{ article.date|date:"d-m-y" }}</p>
 	<div class="article">{{ article.contenu|linebreaks }}</div>
-	</div>
-</body>
+
+{% endblock %}
