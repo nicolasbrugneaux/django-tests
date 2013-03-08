@@ -20,22 +20,23 @@ def contact(request):
 	if request.method == 'POST':			# S'il s'agit d'une requête POST
 		form = ContactForm(request.POST)	# On reprend les données
 		if form.is_valid():					# On vérifie que les données envoyées sont valides
-
 			# Ici on peut traiter les données du formulaire
 			sujet = form.cleaned_data['sujet']
 			message = form.cleaned_data['message']
 			envoyeur = form.cleaned_data['envoyeur']
 			renvoi = form.cleaned_data['renvoi']
 
-			destinataires = ['webmaster@localhost:8000']
-		if renvoi:
-			destinataires.append(envoyeur)
+			destinataires = ['webmaster@example.com']
+			if renvoi:
+				destinataires.append(envoyeur)
 
-		# On envoie le mail grâce à une fonction fourni par Django
-		from django.core.mail import send_mail
-		send_mail(sujet, message, envoyeur, destinataires)
+			# On envoie le mail grâce à une fonction fourni par Django
+			from django.core.mail import send_mail
+			send_mail(sujet, message, envoyeur, destinataires)
 
-		return HttpResponseRedirect('/merci-contact/')	# On redirige l'utilisateur vers une page de confirmation
+			return HttpResponseRedirect('/')	# On redirige l'utilisateur vers une page de confirmation
+		else:
+			return render(request, 'blog/contact.html', {'form': form})
 	else:	# Si c'est pas du POST, c'est probablement une requête GET
 		form = ContactForm()	# On crée un formulaire vide
 
