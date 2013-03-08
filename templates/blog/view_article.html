@@ -3,6 +3,7 @@
 {% block title %}Article - {{article.titre}} {% endblock %}
 
 {% block content %}
+{# add links : like article.categorie->all the posts in this categorie#}
 	<h1>{{ article.titre }} <span class="small">dans {{ article.categorie.nom }}</span></h1>
 	<p class="infos">Rédigé par {{ article.auteur }}, le {{ article.date|date:"d-m-y" }}</p>
 	<div class="article">{{ article.contenu|linebreaks }}</div>

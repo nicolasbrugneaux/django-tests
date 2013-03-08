@@ -7,7 +7,7 @@
 	<section class="ac-container">
 		{% for article in derniers_articles %}
 		    <div class="article">
-		    	{% if last == article %}
+		    	{% if article == derniers_articles|first %}
 		    		<input id="ac-{{ article.id }}" name="accordion-{{ article.id }}" type="checkbox" checked/>
 		    	{% else %}
 		    		<input id="ac-{{ article.id }}" name="accordion-{{ article.id }}" type="checkbox" />

@@ -14,6 +14,16 @@ body{
     line-height: 28px;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
+span.small{
+    font-style: italic;
+    font-size:14px;
+}
+p.infos{
+    font-style: italic;
+    font-size:11px;
+    margin-bottom:20px;
+    margin-top:-20px;
+}
 a:hover {
     color: #1fb3ff;
 }
@@ -31,7 +41,7 @@ div#content{
 div#content h1{
 
     font-size: 30px;
-    color: #505050;
+    color: #1fb3ff;
     height: 100px;
 }
 div#content h3{
