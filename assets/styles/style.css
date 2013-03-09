@@ -93,24 +93,6 @@ li{
     font-size: 14px;
     font-weight: bolder;
 }
-.inputs {
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  display: block;
-  border: none;
-  border-radius: 20px;
-  padding: 5px 8px;
-  color: #333;
-  box-shadow: 
-    inset 0 2px 0 rgba(0,0,0,.2), 
-    0 0 4px rgba(0,0,0,0.1);
-}
-.inputs:focus { 
-  outline: none;
-  box-shadow: 
-    inset 0 2px 0 rgba(0,0,0,.2), 
-    0 0 4px rgba(0,0,0,0.1),
-    0 0 5px 1px #51CBEE;
-}
 .ac-container{
     width: 400px;
     text-align: left;
@@ -221,3 +203,48 @@ li{
 .ac-container input:checked ~ article.ac-large{
     height: 230px;
 }
+
+#myForm{
+    margin:1em 0;
+    color:#fff;
+    width:320px; /* customize width, this form have fluid layout */
+    }
+#myForm legend{display:none;}    
+#myForm fieldset{
+    margin:0;
+    padding:0;
+    border:none;    
+    border-top:3px solid #303030;
+    background:#303030;     
+    padding-bottom:1em;
+    }          
+#myForm p{margin:.5em 20px;} 
+#myForm label{display:block;}    
+#myForm input, #myForm textarea{      
+    width:272px;
+    border:1px solid #111;
+    background:#fff;
+    padding:5px 3px;
+    color:#303030;
+    }       
+#myForm textarea{
+    height:125px;
+    overflow:auto;
+    }                   
+#myForm p.submit{
+    text-align:right;
+    }   
+#myForm .checkbutton{
+    margin:0;
+    display:inline;
+}
+#myForm button{
+    padding:0 20px;
+    height:32px;
+    line-height:32px;       
+    border:1px solid #1fb3ff;
+    background:#1fb3ff url(../images/form_button.gif) repeat-x;
+    color:#fff;
+    cursor:pointer;     
+    text-align:center;      
+    }               

@@ -45,4 +45,5 @@ def contact(request):
 
 def home(request):
 	articles = Article.objects.order_by('date').reverse()
-	return render(request, 'blog/home.html', {'derniers_articles':articles})
+	comments = Comment.objects.order_by('date','article').reverse()
+	return render(request, 'blog/home.html', {'derniers_articles':articles, 'last':articles[0], 'comments':comments})

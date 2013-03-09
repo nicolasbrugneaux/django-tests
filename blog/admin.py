@@ -38,6 +38,30 @@ class ArticleAdmin(admin.ModelAdmin):
             return text
  
     apercu_contenu.short_description = 'Aperçu du contenu'
+
+class CommentAdmin(admin.ModelAdmin):
  
+    # Configuration de la liste d'articles
+    list_display   = ('article', 'auteur', 'date')
+    list_filter    = ('article','date', )
+    date_hierarchy = 'date'
+    ordering       = ('date', )
+    search_fields  = ('auteur', 'contenu')
+ 
+ 
+    # Colonnes personnalisées 
+    def apercu_contenu(self, comment):
+        """ 
+        Retourne les 40 premiers caractères du contenu du commentaire. Si il
+        y a plus de 40 caractères, on rajoute des points de suspension """
+        text = comment.contenu[0:40]
+        if len(comment.contenu) > 40:
+            return '%s...' % text
+        else:
+            return text
+ 
+    apercu_contenu.short_description = 'Aperçu du contenu'
+
 admin.site.register(Categorie)
 admin.site.register(Article, ArticleAdmin)
+admin.site.register(Comment, CommentAdmin)

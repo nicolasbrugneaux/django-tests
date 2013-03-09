@@ -3,10 +3,48 @@
 
     <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}styles/reset.css">
     <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}styles/style.css">
+
+    <script type="text/javascript">
+    function afficher_cacher(src_id)
+    {
+        if(src_id == -1)
+        {
+           id = {{ last.id }};
+        }
+        else
+        {
+            id = src_id;
+        }
+        var comments = document.getElementsByClassName('comments');
+        for(var i=comments.length; i>0; i--)
+        { 
+            if(i==id)
+            {
+                document.getElementById('comments'+i).style.display="block";
+            }
+            else
+            {
+                document.getElementById('comments'+i).style.display="none";
+            }
+        }
+        if(document.getElementById('comments'+id).getElementsByTagName('li').length==0)
+        {
+            {% for comment in comments %}
+                var ID = {{ comment.article.id }};
+                if (ID == id)
+                {
+                    document.getElementById('comments'+id).innerHTML+="<li class=\"comments_item\">{{comment.contenu}}</li>";
+                }
+            {% empty %}
+                document.getElementById('comments'+id).innerHTML="<li>Aucun commentaire.</li>";
+            {% endfor %}
+        }
+    }
+    </script>
+
     <title>{% block title %}My amazing site{% endblock %}</title>
 </head>
-
-<body>
+<body onload="afficher_cacher(-1)">
     <nav id='menu'>
         <ul>
             <a href="{% url 'blog.views.home' %}"><li>HOME</li></a>
@@ -16,7 +54,8 @@
     </nav>
     
     <div id="content">
-        {% block content %}{% endblock %}
+        {% block content %}
+        {% endblock %}
     </div>
 
     <div id="footer">

@@ -4,8 +4,13 @@
 
 {% block content %}
 		<h1>Contact</h1>
-		<form action="{% url 'blog.views.contact' %}" method="post">{% csrf_token %}
-		{{ form.as_p }}
-		<input type="submit" value="Submit" />
+		<h3>Any suggestions, ideas, fill in the information and i'll get in touch as soon as possible</h3>
+
+		<form action="{% url 'blog.views.contact' %}" method="post" id="myForm">{% csrf_token %}
+			<fieldset>
+				<legend>Contact me</legend>
+				{{ form.as_p }}
+				<p class="submit"><button type="submit">Send</button></p>
+			<fieldset>
 		</form>
 {% endblock %}

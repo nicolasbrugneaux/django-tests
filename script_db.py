@@ -2,6 +2,9 @@
 import os
 os.environ['DJANGO_SETTINGS_MODULE']='myFirstProject.settings'
 from blog.models import *
+
+Comment(auteur = "Nicolas", contenu="", article=Article.objects.order_by('date').reverse()[0]).save()
+
 """
 cat = Categorie(nom="TEST")
 cat.save()

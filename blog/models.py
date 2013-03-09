@@ -14,3 +14,14 @@ class Article(models.Model):
     contenu = models.TextField(null=True)
     date = models.DateTimeField(auto_now_add=True, auto_now=False, verbose_name="Date de parution")
     categorie = models.ForeignKey(Categorie)
+
+    def __unicode__(self):
+        return self.titre
+    def __getID__(self):
+        return self.id
+
+class Comment(models.Model):
+	auteur = models.CharField(max_length=42)
+	contenu = models.TextField(null=True)
+	date = models.DateTimeField(auto_now_add=True, auto_now=False, verbose_name="Date du commentaire")
+	article = models.ForeignKey(Article)
