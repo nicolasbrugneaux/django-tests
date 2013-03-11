@@ -1,5 +1,7 @@
 # Create your views here.
 #-*- coding: utf-8 -*-
+from django.views.decorators.cache import cache_page
+
 from django.http import HttpResponse
 from datetime import datetime
 from django.shortcuts import render, get_object_or_404
@@ -9,13 +11,16 @@ from blog.models import *
 from blog.forms import *
 from django.views.generic import TemplateView
 
+#@cache_page(60 * 15)
 def faq(request):
 	return render(request, 'blog/faq.html')
 
+#@cache_page(60 * 15)
 def read(request, id, slug):
 	article = get_object_or_404(Article, id=id)
 	return render(request, 'blog/view_article.html', {'article':article})
 
+#@cache_page(60 * 15)
 def contact(request):
 	if request.method == 'POST':			# S'il s'agit d'une requête POST
 		form = ContactForm(request.POST)	# On reprend les données
@@ -42,7 +47,7 @@ def contact(request):
 
 		return render(request, 'blog/contact.html', {'form': form,})	# On envoie le template avec le formulaire qu'on a construit plus haut
 
-
+#@cache_page(60 * 15)
 def home(request):
 	articles = Article.objects.order_by('date').reverse()
 	comments = Comment.objects.order_by('date','article').reverse()

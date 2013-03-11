@@ -5,30 +5,40 @@
 {% block content %}
 
 <h1>Bienvenue sur mon blog !</h1>
-	<section class="ac-container">
-		{% for article in derniers_articles %}
-		    <div class="article">
-		    	{% if article == derniers_articles|first %}
-		    		<input id="ac-{{ article.id }}" name="accordion" type="radio" checked onclick="afficher_cacher({{ article.id }});" />
-		    	{% else %}
-		    		<input id="ac-{{ article.id }}" name="accordion" type="radio" onclick="afficher_cacher({{ article.id }});"/>
-		    	{% endif %}
-		    	<label for="ac-{{ article.id }}">{{ article.titre }}</label>
-		    	<article class="ac-small">
-		    		<p>{{ article.contenu|truncatewords_html:15 }}</p>
-		        	<p class="article-link"><a href="{% url 'blog.views.read' article.id article.slug %}">Lire la suite</a>
-		        </article>
-		    </div>
-		{% empty %}
-		    <p>Aucun article.</p>
-		{% endfor %}
-	</section>
-	<section class="section-comments">
-		{% for article in derniers_articles %}
-			<ul id="comments{{article.id}}" class="comments">
-			</ul>
-		{% empty %}
-		{% endfor %}
-	</section>
+	<table class="3cols">
+		<tr>
+		<td class="section-title">
+			{% for article in derniers_articles %}
+			    <div class="article">
+			    	{% if article == derniers_articles|first %}
+			    		<input id="ac-{{ article.id }}" name="accordion" type="radio" checked onclick="display_hide({{ article.id }});" />
+			    	{% else %}
+			    		<input id="ac-{{ article.id }}" name="accordion" type="radio" onclick="display_hide({{ article.id }});"/>
+			    	{% endif %}
+			    	<label for="ac-{{ article.id }}">{{ article.titre }}</label>
+			    	<article class="ac-small">
+			    		<p>By {{article.auteur}}, {{ article.date|date:"d/m/Y H:i" }}</p>
+			        	 <p class="article-link">{#<a href="{% url 'blog.views.read' article.id article.slug %}">Lire la suite</a>#}In {{ article.categorie }}</p>
+			        </article>
+			    </div>
+			{% empty %}
+			    <p>Aucun article.</p>
+			{% endfor %}
+		</td>
+
+		<td class="section-content">
+			<div id="div-content">
+			</div>
+		</td>
+
+		<td class="section-comments">
+			{% for article in derniers_articles %}
+				<ul id="comments{{article.id}}" class="comments">
+				</ul>
+			{% empty %}
+			{% endfor %}
+		</td>
+		</tr>
+	</table>
 {% endblock %}
 

@@ -1,8 +1,19 @@
-{% extends "blog/base.html" %}
+<!DOCTYPE html>
+</head>
+	<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}styles/reset.css">
+	<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}styles/style.css">
+	<title>FAQ</title>
+</head>
 
-{% block title %}FAQ{% endblock %}
-
-{% block content %}
+<body>
+    <nav id='menu'>
+        <ul>
+            <a href="{% url 'blog.views.home' %}"><li>HOME</li></a>
+            <a href="{% url 'blog.views.contact' %}"><li>CONTACT</li></a>
+            <a href="{% url 'blog.views.faq' %}"><li>FAQ</li></a>
+        </ul>
+    </nav>
+    <div id="content">
 
 	<h1>Voici la foire aux questions !</h1>
 	<!-- start slipsum code -->
@@ -18,4 +29,10 @@
 
 	<!-- end slipsum code -->
 
-{% endblock %}
+
+    </div>
+    <div id="footer">
+        <p>Site created by <a href="mailto:nicolas.brugneaux@gmail.com">Nicolas Brugneaux</a>. March-2013.</p>
+    </div>
+</body>
+</html>

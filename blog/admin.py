@@ -1,7 +1,12 @@
 # -*- coding:utf8 -*-
 from django.contrib import admin
 from blog.models import *
- 
+class CategorieAdmin(admin.ModelAdmin):
+    # Configuration de la liste d'articles
+    list_display   = ('nom','id')
+    list_filter    = ('nom','id')
+    search_fields  = ('nom','id')
+
 class ArticleAdmin(admin.ModelAdmin):
  
     # Configuration de la liste d'articles
@@ -62,6 +67,6 @@ class CommentAdmin(admin.ModelAdmin):
  
     apercu_contenu.short_description = 'Aperçu du contenu'
 
-admin.site.register(Categorie)
+admin.site.register(Categorie, CategorieAdmin)
 admin.site.register(Article, ArticleAdmin)
 admin.site.register(Comment, CommentAdmin)

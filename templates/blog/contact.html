@@ -1,8 +1,19 @@
-{% extends "blog/base.html" %}
+<!DOCTYPE html>
+</head>
+	<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}styles/reset.css">
+	<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}styles/style.css">
+	<title>Contact</title>
+</head>
 
-{% block title %}Contact{% endblock %}
-
-{% block content %}
+<body>
+    <nav id='menu'>
+        <ul>
+            <a href="{% url 'blog.views.home' %}"><li>HOME</li></a>
+            <a href="{% url 'blog.views.contact' %}"><li>CONTACT</li></a>
+            <a href="{% url 'blog.views.faq' %}"><li>FAQ</li></a>
+        </ul>
+    </nav>
+    <div id="content">
 		<h1>Contact</h1>
 		<h3>Any suggestions, ideas, fill in the information and i'll get in touch as soon as possible</h3>
 
@@ -13,4 +24,9 @@
 				<p class="submit"><button type="submit">Send</button></p>
 			<fieldset>
 		</form>
-{% endblock %}
+    </div>
+    <div id="footer">
+        <p>Site created by <a href="mailto:nicolas.brugneaux@gmail.com">Nicolas Brugneaux</a>. March-2013.</p>
+    </div>
+</body>
+</html>
