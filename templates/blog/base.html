@@ -3,7 +3,6 @@
 
     <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}styles/reset.css">
     <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}styles/style.css">
-
     <script type="text/javascript">
     function display_hide(src_id)
     {
@@ -34,10 +33,15 @@
             if(i==id)
             {
                 document.getElementById('comments'+i).style.display="block";
+                document.getElementById('form_comment'+i).style.display="block";
+                var c = document.getElementsByClassName('post_com')[document.getElementsByClassName('post_com').length-id];
+                c.value = i;
+                c.id = "post_com"+i;
             }
             else
             {
                 document.getElementById('comments'+i).style.display="none";
+                document.getElementById('form_comment'+i).style.display="none";
             }
         }
         if(document.getElementById('comments'+id).getElementsByTagName('li').length==0)
@@ -74,7 +78,7 @@
     </div>
 
     <div id="footer">
-        <p>Site created by <a href="mailto:nicolas.brugneaux@gmail.com">Nicolas Brugneaux</a>. March-2013.</p>
+        <p>Site created by <a href="mailto:nicolas.brugneaux@gmail.com">Nicolas Brugneaux</a>. March-2013.<br/><a href="http://www.djangoproject.com/"><img id="django"src="https://www.djangoproject.com/m/img/badges/djangopowered126x54_grey.gif" border="0" alt="Powered by Django." title="Powered by Django." /></a><p>
     </div>
 </body>
 </html>

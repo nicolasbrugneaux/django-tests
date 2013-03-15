@@ -13,7 +13,12 @@ class ContactForm(forms.Form):
 	copy.widget.attrs.update({'class' : 'checkbutton'})
 
 class CommentForm(forms.Form):
-	author = forms.CharField(max_length=42,required=True)
-	author.widget.attrs.update({'class' : 'first'})
+		article = forms.CharField( widget = forms.HiddenInput, max_length=10, required=True)
+		article.widget.attrs.update({'class' : 'post_com', 'id':'post_com'})
 
-	comment = forms.CharField(widget = forms.Textarea, required=True)
+		author = forms.CharField(max_length=40,required=True)
+		author.widget.attrs.update({'class' : 'first'})
+
+		comment = forms.CharField(widget = forms.Textarea, required=True)
+
+	

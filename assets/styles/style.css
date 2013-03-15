@@ -79,7 +79,7 @@ li{
 {
     font-size: 10px;
     text-align: center;
-    position: fixed;
+    position: absolute;
     bottom: 0px;
     height: 30px;
     width: 100%;

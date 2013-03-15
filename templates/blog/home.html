@@ -3,7 +3,6 @@
 {% block title %}Blog{% endblock %}
 
 {% block content %}
-
 <h1>Bienvenue sur mon blog !</h1>
 	<table class="3cols">
 		<tr>
@@ -30,13 +29,24 @@
 			<div id="div-content">
 			</div>
 		</td>
-
 		<td class="section-comments">
-			{% for article in derniers_articles %}
-				<ul id="comments{{article.id}}" class="comments">
-				</ul>
-			{% empty %}
-			{% endfor %}
+					{% for article in derniers_articles %}
+						<ul id="comments{{article.id}}" class="comments">
+						</ul>
+
+					<form action="{% url 'blog.views.home' %}" method="post" id="form_comment{{article.id}}" class="form_comment">
+						<p>{{form.article}}</p>
+						{% csrf_token %}
+						<legend>Add a comment</legend>
+						{% for field in form %}
+							{% if not field.is_hidden %}
+								<p>{{field.label}}:{{field}}</p>
+							{% endif %}
+						{% endfor %}
+						<p class="submit"><button type="submit">Send</button></p>
+					</form>
+					{% empty %}
+					{% endfor %}
 		</td>
 		</tr>
 	</table>
