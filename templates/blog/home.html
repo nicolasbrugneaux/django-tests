@@ -4,51 +4,57 @@
 
 {% block content %}
 <h1>Bienvenue sur mon blog !</h1>
-	<table class="3cols">
-		<tr>
-		<td class="section-title">
-			{% for article in derniers_articles %}
-			    <div class="article">
-			    	{% if article == derniers_articles|first %}
-			    		<input id="ac-{{ article.id }}" name="accordion" type="radio" checked onclick="display_hide({{ article.id }});" />
-			    	{% else %}
-			    		<input id="ac-{{ article.id }}" name="accordion" type="radio" onclick="display_hide({{ article.id }});"/>
-			    	{% endif %}
-			    	<label for="ac-{{ article.id }}">{{ article.titre }}</label>
-			    	<article class="ac-small">
-			    		<p>By {{article.auteur}}, {{ article.date|date:"d/m/Y H:i" }}</p>
-			        	 <p class="article-link">{#<a href="{% url 'blog.views.read' article.id article.slug %}">Lire la suite</a>#}In {{ article.categorie }}</p>
-			        </article>
-			    </div>
-			{% empty %}
-			    <p>Aucun article.</p>
-			{% endfor %}
-		</td>
-
-		<td class="section-content">
-			<div id="div-content">
+	<div class="section-title">
+		{% for article in derniers_articles %}
+		    <div class="article">
+		    	{% if article == derniers_articles|first %}
+		    		<input id="ac-{{ article.id }}" name="accordion" type="radio" checked onclick="display_hide({{ article.id }});" />
+		    	{% else %}
+		    		<input id="ac-{{ article.id }}" name="accordion" type="radio" onclick="display_hide({{ article.id }});"/>
+		    	{% endif %}
+		    	<label for="ac-{{ article.id }}">{{ article.titre }}</label>
+		    	<article class="ac-small">
+		    		<p>By {{article.auteur}}, {{ article.date|date:"d/m/Y H:i" }}</p>
+		        	 <p class="article-link">{#<a href="{% url 'blog.views.read' article.id article.slug %}">Lire la suite</a>#}In {{ article.categorie }}</p>
+		        </article>
+		    </div>
+		{% empty %}
+		    <p>Aucun article.</p>
+		{% endfor %}
+	</div>
+	<div class="section-right">
+		<div class="section-content">
+			<div id="div-content"></div>
+		</div>
+		<div class="section-comments">
+			<h3>Comments</h3>
+				{% for article in derniers_articles %}
+			<div class="comments_content">
+					<ul id="comments{{article.id}}" class="comments">
+					</ul>
 			</div>
-		</td>
-		<td class="section-comments">
-					{% for article in derniers_articles %}
-						<ul id="comments{{article.id}}" class="comments">
-						</ul>
-
-					<form action="{% url 'blog.views.home' %}" method="post" id="form_comment{{article.id}}" class="form_comment">
-						<p>{{form.article}}</p>
-						{% csrf_token %}
-						<legend>Add a comment</legend>
-						{% for field in form %}
-							{% if not field.is_hidden %}
-								<p>{{field.label}}:{{field}}</p>
-							{% endif %}
-						{% endfor %}
-						<p class="submit"><button type="submit">Send</button></p>
-					</form>
-					{% empty %}
+			<div class="form_comment">
+				<form action="{% url 'blog.views.home' %}" method="post" id="form_comment{{article.id}}" class="form_comment">
+					<p>{{form.article}}</p>
+					{% csrf_token %}
+					<fieldset>
+					<legend>Add a comment</legend>
+					{% for field in form %}
+						{% if not field.is_hidden %}
+							<p>
+							<label for="{{field.auto_id}}">{{field.label}}</label>
+							{{field}}
+							</p>
+						{% endif %}
 					{% endfor %}
-		</td>
-		</tr>
-	</table>
+					<p class="submit"><button type="submit">Send</button></p>
+					</fieldset>
+				</form>
+			</div>
+				{% empty %}
+				{% endfor %}
+
+		</div>
+	</div>
 {% endblock %}
 

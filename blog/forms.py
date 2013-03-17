@@ -9,7 +9,7 @@ class ContactForm(forms.Form):
 
 	envoyeur = forms.EmailField(label="E-mail",required=True)
 
-	copy = forms.BooleanField(help_text="Check if you want to have a copy of the message", required=False)
+	copy = forms.BooleanField(required=False)
 	copy.widget.attrs.update({'class' : 'checkbutton'})
 
 class CommentForm(forms.Form):
