@@ -247,7 +247,7 @@ li{
 }
 .section-right {
     position: relative;
-    background: #fff;
+    background: rgba(255, 255, 255, 0.5);
     text-align:justify;
     border: 3px solid #303030;
 }

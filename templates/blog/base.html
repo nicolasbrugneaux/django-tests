@@ -10,7 +10,7 @@
         if(src_id == -1)
         {
            id = {{ last.id }};
-           contenu = {{ "\"<p>"|add:last.contenu|safe|add:"</p>\"" }};
+           contenu = "{{ last.contenu|safe|linebreaks|escapejs }}";
         }
         else
         {
@@ -19,7 +19,7 @@
                 var ID = {{ article.id }};
                 if (ID == id)
                 {
-                    contenu = {{ "\"<p>"|add:article.contenu|safe|add:"</p>\"" }};
+                    contenu = "{{ article.contenu|safe|linebreaks|escapejs }}";
                 }
             {%empty%}
                 contenu ="";
