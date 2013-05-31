@@ -249,7 +249,41 @@ li{
 .section-right{
     width:60%;
 }
+
 .section-comments {
+    .form_comment{
+        color:@white;
+        legend{display:none;}    
+        fieldset{
+            margin:0;
+            padding:0;
+            border:none;    
+            border-top:3px solid @dark-grey;
+            background:@dark-grey;     
+            padding-bottom:1em;
+            }  
+
+        p{margin:1%}
+        label{display:block;}    
+        input, textarea{      
+            width:80%;
+            border:1px solid #111;
+            background:@white;
+            padding:5px 3px;
+            color:@dark-grey;
+            }       
+        textarea{
+            height:125px;
+            overflow:auto;
+            }                   
+        p.submit{
+            text-align:right;
+            }   
+        .checkbutton{
+            margin:0;
+            display:inline;
+        }
+    }
     h3{
         margin-top:40px;
         background-color:@light-grey;
@@ -267,9 +301,14 @@ li{
     .comments_content{
 
         text-align:justify;
-        padding-left:20px;
+        padding-left: 20px;
+    }
+    button{
+        margin-left: 60%;
+        margin-bottom: 10px;
     }
 }
+
 .section-content p{
     padding:20px;
 }
@@ -304,9 +343,6 @@ li{
     margin-top: -34px;
 }
 
-.form_comment{
-    color:@white;
-}
 #myForm{
     margin:1em 0;
     color:@white;
@@ -342,16 +378,16 @@ li{
         margin:0;
         display:inline;
     }
-    button,.form_comment button{
-        padding:0 20px;
-        height:32px;
-        line-height:32px;       
-        border:1px solid @sexy-blue;
-        background:@sexy-blue url(../images/form_button.gif) repeat-x;
-        color:@white;
-        cursor:pointer;     
-        text-align:center;      
-    }
+}
+button{
+    padding:0 20px;
+    height:32px;
+    line-height:32px;       
+    border:1px solid @sexy-blue;
+    background:@sexy-blue url(../images/form_button.gif) repeat-x;
+    color:@white;
+    cursor:pointer;     
+    text-align:center;      
 }
 div#overlay{
     z-index: 1;

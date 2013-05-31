@@ -433,6 +433,45 @@ li {
 .section-right {
   width: 60%;
 }
+.section-comments .form_comment {
+  color: #ffffff;
+}
+.section-comments .form_comment legend {
+  display: none;
+}
+.section-comments .form_comment fieldset {
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-top: 3px solid #303030;
+  background: #303030;
+  padding-bottom: 1em;
+}
+.section-comments .form_comment p {
+  margin: 1%;
+}
+.section-comments .form_comment label {
+  display: block;
+}
+.section-comments .form_comment input,
+.section-comments .form_comment textarea {
+  width: 80%;
+  border: 1px solid #111;
+  background: #ffffff;
+  padding: 5px 3px;
+  color: #303030;
+}
+.section-comments .form_comment textarea {
+  height: 125px;
+  overflow: auto;
+}
+.section-comments .form_comment p.submit {
+  text-align: right;
+}
+.section-comments .form_comment .checkbutton {
+  margin: 0;
+  display: inline;
+}
 .section-comments h3 {
   margin-top: 40px;
   background-color: #eeeeee;
@@ -450,6 +489,10 @@ li {
 .section-comments .comments_content {
   text-align: justify;
   padding-left: 20px;
+}
+.section-comments button {
+  margin-left: 60%;
+  margin-bottom: 10px;
 }
 .section-content p {
   padding: 20px;
@@ -483,9 +526,6 @@ li {
   border-width: 34px;
   top: 20%;
   margin-top: -34px;
-}
-.form_comment {
-  color: #ffffff;
 }
 #myForm {
   margin: 1em 0;
@@ -541,8 +581,7 @@ li {
   margin: 0;
   display: inline;
 }
-#myForm button,
-#myForm .form_comment button {
+button {
   padding: 0 20px;
   height: 32px;
   line-height: 32px;
