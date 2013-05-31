@@ -56,5 +56,66 @@
 
 		</div>
 	</div>
+	
+	<div class="script" display="none">
+		<script type="text/javascript">
+            function display_hide(src_id)
+            {
+                var id, contenu;
+                if(src_id == -1)
+                {
+                   id = {{ last.id }};
+                   contenu = "{{ last.contenu|safe|linebreaks|escapejs }}";
+                }
+                else
+                {
+                    id = src_id;
+                    {% for article in derniers_articles %}
+                        var ID = {{ article.id }};
+                        if (ID == id)
+                        {
+                            contenu = "{{ article.contenu|safe|linebreaks|escapejs }}";
+                        }
+                    {%empty%}
+                        contenu ="";
+                    {%endfor%}
+                }
+                $('#div-content').html(contenu);
+
+                var comments = $('.comments');
+                for(var i=comments.length; i>0; i--)
+                { 
+                    if(i==id)
+                    {
+                        $('#comments'+i).show();
+                        $('#form_comment'+i).show();
+                        var c = $('.post_com')[$('.post_com').length-id];
+                        c.value = i;
+                        c.id = "post_com"+i;
+                    }
+                    else
+                    {
+                        $('#comments'+i).hide();
+                        $('#form_comment'+i).hide();
+                    }
+                }
+                if($('#comments'+id).find('li').length==0)
+                {
+                    {% for comment in comments %}
+                        ID = {{ comment.article.id }};
+                        if (ID == id)
+                        {
+                            $('#comments'+id).html($('#comments'+id).html()+"<li class=\"comments_item\"><i>{{comment.contenu}}</i></li>");
+                        }
+                    {% endfor %}
+                    if($('#comments'+id).find('li').length==0)
+                    {
+                        $('#comments'+id).html("<li class=\"comments_item\"><i>Aucun commentaire...</i></li>");
+                    }
+                }
+            }
+            display_hide(-1);
+        </script>
+    </div>
 {% endblock %}
 

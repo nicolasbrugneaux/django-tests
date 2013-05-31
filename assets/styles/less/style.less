@@ -1,0 +1,385 @@
+/*  variables */
+@import "variables";
+ /* Resets browser style */
+@import "reset";
+ /* from icomoon */
+@import "icons";
+
+::-webkit-scrollbar {
+    background: @white;
+    width: 8px;
+}
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 8px;
+}
+body{
+    margin:0;
+    background-color: @light-grey;
+    color: @dark-grey;
+    font-size: 14px;
+    line-height: 28px;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+span.small{
+    font-style: italic;
+    font-size:14px;
+}
+p.infos{
+    font-style: italic;
+    font-size:11px;
+    margin-bottom:20px;
+    margin-top:-20px;
+}
+a {
+    color: #808080;
+    text-decoration: none;
+    &:hover
+    {
+        color: @sexy-blue;
+    }
+}
+div#content{
+    width: 80%;
+    background-color: @light-grey;
+    padding-top: 2%;
+    margin: auto auto auto 130px;
+    h1{
+
+    font-size: 30px;
+    color: @sexy-blue;
+    }
+    h3{
+    font-size: 17px;
+    color: #707070;
+    }
+}
+nav{
+    width: 100px;
+    height: 100%;
+    background: @dark-grey;
+    border-left: solid 1px #11001005;
+    position: fixed;z-index: 0;
+
+    li{
+        padding-top: 20px;
+        font-size: 30;
+        height: 40px;
+        line-height: 50px;
+        color: @white;
+        text-align: center;
+        width: 100px;
+        background: @dark-grey;
+        -webkit-transition: background .15s ease-in-out;
+        &:hover{
+            background-color:#202020;
+            color:@sexy-blue;
+            cursor:pointer;
+            -webkit-transition: background 0;
+
+        }
+    }
+    #django{ 
+        li{
+            position:absolute;
+            bottom:0;        
+            span{
+                &:first-child{
+                    font-size: 10px;
+                    padding-right: 5px;
+                    height: 10px;
+                    line-height: 10px;
+                    float:right;
+                }
+                &:last-child{
+                    font-size: 25px;
+                    margin-left: 5px;
+                    float:left;
+                }
+            }
+        }
+    }
+} 
+li{
+    display:block;
+}
+
+#footer
+{
+    float:right;
+    font-size: 10px;
+    text-align: center;
+    bottom: 0px;
+    height: 30px;
+    width: 100%;
+    position:relative;
+    margin-top:50px;
+}
+.errorlist{
+    color: @red;
+}
+.errorlist li{
+    margin:0;
+    font-size: 14px;
+    font-weight: bolder;
+}
+.section-right{ 
+    float:left;
+    width: 50%;
+}
+.section-title{
+    width: 33%;
+    text-align: left;
+    padding-right: 32px;
+    margin-top:100px;
+    float:left;
+    label{
+        font-family: 'BebasNeueRegular', 'Arial Bold', Arial, sans-serif;
+        padding: 5px 20px;
+        position: relative;
+        margin-top:5px;
+        z-index: 20;
+        display: block;
+        height: 30px;
+        cursor: pointer;
+        color: #777;
+        text-shadow: 1px 1px 1px rgba(255,255,255,0.8);
+        line-height: 33px;
+        font-size: 19px;
+        background: #ddd;
+        background: -moz-linear-gradient(top, #ddd 1%, #eaeaea 100%);
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,#ddd), color-stop(100%,#eaeaea));
+        background: -webkit-linear-gradient(top, #ddd 1%,#eaeaea 100%);
+        background: -o-linear-gradient(top, #ddd 1%,#eaeaea 100%);
+        background: -ms-linear-gradient(top, #ddd 1%,#eaeaea 100%);
+        background: linear-gradient(top, #ddd 1%,#eaeaea 100%);
+        background: #ddd; /* Old browsers */
+        background: -moz-linear-gradient(top, #ddd 1%, #ddd 1%, #eaeaea 100%, #eaeaea 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ddd), color-stop(1%,#ddd), color-stop(100%,#eaeaea), color-stop(100%,#eaeaea)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top, #ddd 1%,#ddd 1%,#eaeaea 100%,#eaeaea 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top, #ddd 1%,#ddd 1%,#eaeaea 100%,#eaeaea 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top, #ddd 1%,#ddd 1%,#eaeaea 100%,#eaeaea 100%); /* IE10+ */
+        background: linear-gradient(to bottom, #ddd 1%,#ddd 1%,#eaeaea 100%,#eaeaea 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ddd', endColorstr='#eaeaea',GradientType=0 ); /* IE6-9 */
+        box-shadow: 
+            0px 0px 0px 1px rgba(155,155,155,0.3), 
+            1px 0px 0px 0px rgba(255,255,255,0.9) inset, 
+            0px 2px 2px rgba(0,0,0,0.1);
+        &:hover{
+            background: @white;
+        }
+    }
+    input:checked + label, input:checked + label:hover{
+        background: @dark-grey;
+        color: @white;
+        text-shadow: none;
+        box-shadow: 
+            0px 0px 0px 1px rgba(155,155,155,0.3), 
+            0px 2px 2px rgba(0,0,0,0.1);
+    }
+    label:hover:after,
+        input:checked + label:hover:after{
+        content: '';
+        position: absolute;
+        width: 24px;
+        height: 24px;
+        right: 13px;
+        top: 7px;
+        background: transparent url(../images/arrow_down.png) no-repeat center center;  
+    }
+    input:checked + label:hover:after{
+        background-image: url(../images/arrow_up.png);
+    }
+    input{
+        display: none;
+    }
+    article{
+        background: rgba(255, 255, 255, 0.5);
+        margin-top: -6px;
+        overflow: hidden;
+        height: 0px;
+        position: relative;
+        z-index: 10;
+        -webkit-transition: height 0.3s ease-in-out, box-shadow 0.6s linear;
+        -moz-transition: height 0.3s ease-in-out, box-shadow 0.6s linear;
+        -o-transition: height 0.3s ease-in-out, box-shadow 0.6s linear;
+        -ms-transition: height 0.3s ease-in-out, box-shadow 0.6s linear;
+        transition: height 0.3s ease-in-out, box-shadow 0.6s linear;
+    }
+    article p{
+        font-style: italic;
+        color: #777;
+        line-height: 23px;
+        font-size: 14px;
+        padding: 20px;
+        text-shadow: 1px 1px 1px rgba(255,255,255,0.8);
+    }
+    article p.article-link{
+        font-style: bold;
+        color: #777;
+        line-height: 23px;
+        font-size: 14px;
+        text-shadow: 1px 1px 1px rgba(255,255,255,0.8);
+        width: 100%;
+        background: #ddd;
+        border-top: solid 1px #e0e0e0;
+        padding-top: 5px;
+        padding-bottom:12px;
+        margin-top:43px;
+        margin-bottom:0px;
+    }
+    input:checked ~ article{
+        -webkit-transition: height 0.5s ease-in-out, box-shadow 0.1s linear;
+        -moz-transition: height 0.5s ease-in-out, box-shadow 0.1s linear;
+        -o-transition: height 0.5s ease-in-out, box-shadow 0.1s linear;
+        -ms-transition: height 0.5s ease-in-out, box-shadow 0.1s linear;
+        transition: height 0.5s ease-in-out, box-shadow 0.1s linear;
+        box-shadow: 0px 0px 0px 1px rgba(155,155,155,0.3);
+    }
+    input:checked ~ article.ac-small{
+        height: 140px;
+    }
+    input:checked ~ article.ac-medium{
+        height: 180px;
+    }
+    input:checked ~ article.ac-large{
+        height: 230px;
+    }
+}
+.section-right{
+    width:60%;
+}
+.section-comments {
+    h3{
+        margin-top:40px;
+        background-color:@light-grey;
+        padding-left:20px;
+        margin-bottom:10px;
+    }
+    p{
+        text-align:justify;
+        padding-left:20px;
+        margin-top:30px;
+    }
+    li{
+        border-bottom:1px solid #DDD;
+    }
+    .comments_content{
+
+        text-align:justify;
+        padding-left:20px;
+    }
+}
+.section-content p{
+    padding:20px;
+}
+.section-right {
+    position: relative;
+    background: rgba(255, 255, 255, 0.5);
+    text-align:justify;
+    border: 3px solid @dark-grey;
+}
+.section-right:after, .section-right:before {
+    right: 100%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+}
+
+.section-right:after {
+    border-color: rgba(196, 196, 196, 0);
+    border-right-color: @white;
+    border-width: 30px;
+    top: 20%;
+    margin-top: -30px;
+}
+.section-right:before {
+    border-color: rgba(74, 74, 74, 0);
+    border-right-color: @dark-grey;
+    border-width: 34px;
+    top: 20%;
+    margin-top: -34px;
+}
+
+.form_comment{
+    color:@white;
+}
+#myForm{
+    margin:1em 0;
+    color:@white;
+    width:400px; /* customize width, this form have fluid layout */
+    legend, .form_comment legend{display:none;}    
+    fieldset, .form_comment fieldset{
+        margin:0;
+        padding:0;
+        border:none;    
+        border-top:3px solid @dark-grey;
+        background:@dark-grey;     
+        padding-bottom:1em;
+        }  
+
+    .form_comment p{margin:1%}         
+    p {margin:.5em 20px;} 
+    label, .form_comment label{display:block;}    
+    input, textarea,.form_comment input,.form_comment textarea{      
+        width:80%;
+        border:1px solid #111;
+        background:@white;
+        padding:5px 3px;
+        color:@dark-grey;
+        }       
+    textarea,.form_comment textarea{
+        height:125px;
+        overflow:auto;
+        }                   
+    p.submit,.form_comment p.submit{
+        text-align:right;
+        }   
+    .checkbutton,.form_comment .checkbutton{
+        margin:0;
+        display:inline;
+    }
+    button,.form_comment button{
+        padding:0 20px;
+        height:32px;
+        line-height:32px;       
+        border:1px solid @sexy-blue;
+        background:@sexy-blue url(../images/form_button.gif) repeat-x;
+        color:@white;
+        cursor:pointer;     
+        text-align:center;      
+    }
+}
+div#overlay{
+    z-index: 1;
+    position: fixed;
+    width: 100%;
+    background-size:100%;
+    padding-left:130px;
+    a{
+        color:@white;
+        &:hover{
+            color:@white;
+            text-decoration: underline;
+        }
+    }
+    background: lighten(@red,20%);
+    border-bottom: solid 1px @red;
+    height: 50px;
+    line-height: 50px;
+    padding: 0px 20px;
+    margin: 0;
+}
+@font-face {
+    font-family: 'icomoon';
+    src:url('./fonts/icomoon.eot');
+    src:url('./fonts/icomoon.eot?#iefix') format('embedded-opentype'),
+        url('./fonts/icomoon.woff') format('woff'),
+        url('./fonts/icomoon.ttf') format('truetype'),
+        url('./fonts/icomoon.svg#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}

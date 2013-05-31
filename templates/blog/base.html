@@ -1,92 +1,33 @@
 <!DOCTYPE html>
 <head>
-
-    <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}styles/reset.css">
     <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}styles/style.css">
-    <div id="overlay">
-      <p>You need Javascript to properly see this website. Please enable it :)<br/><a href="http://www.enable-javascript.com/">Follow these instructions</a> if you need any help to do so.</p>
-    </div>
-    <script type="text/javascript">
-      document.getElementById('overlay').style.display = 'none';
-    </script>
-
-    <script type="text/javascript">
-    function display_hide(src_id)
-    {
-        var id, contenu;
-        if(src_id == -1)
-        {
-           id = {{ last.id }};
-           contenu = "{{ last.contenu|safe|linebreaks|escapejs }}";
-        }
-        else
-        {
-            id = src_id;
-            {% for article in derniers_articles %}
-                var ID = {{ article.id }};
-                if (ID == id)
-                {
-                    contenu = "{{ article.contenu|safe|linebreaks|escapejs }}";
-                }
-            {%empty%}
-                contenu ="";
-            {%endfor%}
-        }
-        document.getElementById('div-content').innerHTML=contenu;
-
-        var comments = document.getElementsByClassName('comments');
-        for(var i=comments.length; i>0; i--)
-        { 
-            if(i==id)
-            {
-                document.getElementById('comments'+i).style.display="block";
-                document.getElementById('form_comment'+i).style.display="block";
-                var c = document.getElementsByClassName('post_com')[document.getElementsByClassName('post_com').length-id];
-                c.value = i;
-                c.id = "post_com"+i;
-            }
-            else
-            {
-                document.getElementById('comments'+i).style.display="none";
-                document.getElementById('form_comment'+i).style.display="none";
-            }
-        }
-        if(document.getElementById('comments'+id).getElementsByTagName('li').length==0)
-        {
-            {% for comment in comments %}
-                ID = {{ comment.article.id }};
-                if (ID == id)
-                {
-                    document.getElementById('comments'+id).innerHTML+="<li class=\"comments_item\"><i>{{comment.contenu}}</i></li>";
-                }
-            {% endfor %}
-            if(document.getElementById('comments'+id).getElementsByTagName('li').length==0)
-            {
-                document.getElementById('comments'+id).innerHTML="<li class=\"comments_item\"><i>Aucun commentaire...</i></li>";
-            }
-        }
-    }
-    </script>
-
+    <script type="text/javascript" src="{{STATIC_URL}}scripts/jquery-1.10.1.min.js"></script>
     <title>{% block title %}My amazing site{% endblock %}</title>
 </head>
-<body onload="display_hide(-1)">
+<body>
+    <div id="overlay">
+        <p>You need Javascript to properly see this website. Please enable it :) <a href="http://www.enable-javascript.com/">Follow these instructions</a> if you need any help to do so.</p>
+        <script type="text/javascript">
+            $('#overlay').hide();
+        </script>
+    </div>
     <nav id='menu'>
         <ul>
-            <a href="{% url 'blog.views.home' %}"><li>HOME</li></a>
-            <a href="{% url 'blog.views.contact' %}"><li>CONTACT</li></a>
-            <a href="{% url 'blog.views.faq' %}"><li>FAQ</li></a>
+            <a href="{% url 'blog.views.home' %}"><li class="icon-home"></li></a>
+            <a href="{% url 'blog.views.contact' %}"><li class="icon-user"></li></a>
+            <!--<a href="{% url 'blog.views.faq' %}"><li>FAQ</li></a>-->
+            <a id="django" href="http://www.djangoproject.com/" target="_blank" ><li><span><p>Powered by</p></span><span><p class="icon-django"></p></span></li></a>
         </ul>
-        <a id="django" href="http://www.djangoproject.com/" target="_blank" ><img src="https://www.djangoproject.com/m/img/badges/djangopowered126x54_grey.gif" border="0" alt="Powered by Django." title="Powered by Django." /></a>
     </nav>
     
     <div id="content">
         {% block content %}
         {% endblock %}
     </div>
-
     <div id="footer">
         <p>Site created by <a href="mailto:nicolas.brugneaux@gmail.com">Nicolas Brugneaux</a>. March-2013.<p>
     </div>
+
+
 </body>
 </html>

@@ -1,20 +1,8 @@
-<!DOCTYPE html>
-</head>
-	<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}styles/reset.css">
-	<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}styles/style.css">
-	<title>Contact</title>
-</head>
+{% extends "blog/base.html" %}
 
-<body>
-    <nav id='menu'>
-        <ul>
-            <a href="{% url 'blog.views.home' %}"><li>HOME</li></a>
-            <a href="{% url 'blog.views.contact' %}"><li>CONTACT</li></a>
-            <a href="{% url 'blog.views.faq' %}"><li>FAQ</li></a>
-        </ul>
-        <a id="django" href="http://www.djangoproject.com/" target="_blank" ><img src="https://www.djangoproject.com/m/img/badges/djangopowered126x54_grey.gif" border="0" alt="Powered by Django." title="Powered by Django." /></a>
-    </nav>
-    <div id="content">
+{% block title %}Contact{% endblock %}
+
+{% block content %}
 		<h1>Contact</h1>
 		<h3>Any suggestions, ideas, fill in the information and i'll get in touch as soon as possible</h3>
 
@@ -25,9 +13,4 @@
 				<p class="submit"><button type="submit">Send</button></p>
 			<fieldset>
 		</form>
-    </div>
-    <div id="footer">
-        <p>Site created by <a href="mailto:nicolas.brugneaux@gmail.com">Nicolas Brugneaux</a>. March-2013.</p>
-    </div>
-</body>
-</html>
+{% endblock %}
