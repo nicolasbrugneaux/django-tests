@@ -6,17 +6,8 @@
 {# add links : like article.categorie->all the posts in this categorie#}
 	<h1 class="article">{{ article.titre }} <span class="small">dans {{ article.categorie.nom }}</span></h1>
 	<p class="infos">Rédigé par {{ article.auteur }}, le {{ article.date|date:"d-m-y" }}</p>
-	<div class="article_content"></div>
-	<div class="script" display="none">
-		<script type="text/javascript">
-			function add_content()
-			{
-				var contenu = "{{ article.contenu|safe|linebreaks|escapejs }}";
-				$('.article_content').html(contenu);
-			}
-			add_content();
-		</script>
-	</div>
+	<div class="article_content">{{ article.contenu|safe|linebreaks }}</div>
+
     <div class="twitter-button">
     <a  href="https://twitter.com/share"
         class="twitter-share-button" 
