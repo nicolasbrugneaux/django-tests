@@ -230,6 +230,9 @@ div#content h1 {
   font-size: 30px;
   color: #1fb3ff;
 }
+div#content h1.article {
+  margin-bottom: 50px;
+}
 div#content h3 {
   font-size: 17px;
   color: #707070;
@@ -410,7 +413,7 @@ li {
   border-top: solid 1px #e0e0e0;
   padding-top: 5px;
   padding-bottom: 12px;
-  margin-top: 43px;
+  margin-top: 16px;
   margin-bottom: 0px;
 }
 .section-title input:checked ~ article {

@@ -4,8 +4,44 @@
 
 {% block content %}
 {# add links : like article.categorie->all the posts in this categorie#}
-	<h1>{{ article.titre }} <span class="small">dans {{ article.categorie.nom }}</span></h1>
+	<h1 class="article">{{ article.titre }} <span class="small">dans {{ article.categorie.nom }}</span></h1>
 	<p class="infos">Rédigé par {{ article.auteur }}, le {{ article.date|date:"d-m-y" }}</p>
-	<div class="article">{{ article.contenu|linebreaks }}</div>
+	<div class="article_content"></div>
+	<div class="script" display="none">
+		<script type="text/javascript">
+			function add_content()
+			{
+				var contenu = "{{ article.contenu|safe|linebreaks|escapejs }}";
+				$('.article_content').html(contenu);
+			}
+			add_content();
+		</script>
+	</div>
+    <div class="twitter-button">
+    <a  href="https://twitter.com/share"
+        class="twitter-share-button" 
+        data-lang="en" 
+        data-url="{{ request.build_absolute_uri }}"
+        data-via="localhost"
+        data-text="{{ article.titre|truncatewords_html:12 }} {{ request.build_absolute_uri }} by {{article.auteur}}"
+        data-hashtags="{{ article.categorie }}"
+        data-related="Nicolas_Bru_"
+        data-size="large"
+        data-count="none">
+        Tweet
+    </a>
+    <script>
+        !function(d,s,id){
+            var js,fjs=d.getElementsByTagName(s)[0];
+            if(!d.getElementById(id)){
+                js=d.createElement(s);
+                js.id=id;
+                js.src="https://platform.twitter.com/widgets.js";
+                fjs.parentNode.insertBefore(js,fjs);
+            }
+        }
+        (document,"script","twitter-wjs");
+    </script>
+</div>
 
 {% endblock %}

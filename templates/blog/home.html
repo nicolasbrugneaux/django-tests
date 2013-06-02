@@ -15,6 +15,34 @@
 		    	<label for="ac-{{ article.id }}">{{ article.titre }}</label>
 		    	<article class="ac-small">
 		    		<p>By {{article.auteur}}, {{ article.date|date:"d/m/Y H:i" }}</p>
+
+                    <div class="twitter-button">
+                        <a  href="https://twitter.com/share"
+                            class="twitter-share-button" 
+                            data-lang="en" 
+                            data-url="{{ request.build_absolute_uri|slice:'-1' }}{% url 'blog.views.read' article.id article.slug %}"
+                            data-via="localhost"
+                            data-text="{{ article.titre|truncatewords_html:12 }} {{ request.build_absolute_uri|slice:'-1' }}{% url 'blog.views.read' article.id article.slug %} by {{article.auteur}}"
+                            data-hashtags="{{ article.categorie }}"
+                            data-related="Nicolas_Bru_"
+                            data-size="small"
+                            data-count="none">
+                            Tweet
+                        </a>
+                        <script>
+                            !function(d,s,id){
+                                var js,fjs=d.getElementsByTagName(s)[0];
+                                if(!d.getElementById(id)){
+                                    js=d.createElement(s);
+                                    js.id=id;
+                                    js.src="https://platform.twitter.com/widgets.js";
+                                    fjs.parentNode.insertBefore(js,fjs);
+                                }
+                            }
+                            (document,"script","twitter-wjs");
+                        </script>
+                    </div>
+
 		        	 <p class="article-link">{#<a href="{% url 'blog.views.read' article.id article.slug %}">Lire la suite</a>#}In {{ article.categorie }}</p>
 		        </article>
 		    </div>
